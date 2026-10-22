@@ -1,9 +1,10 @@
 MIT License
 
+Copyright (c) 2026 YEMIN11238
 Copyright (c) 2026 mcd-usual-migrate contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of the original software and associated original documentation files (the
+of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including without
 limitation the rights to use, copy, modify, merge, publish, distribute,
 sublicense, and/or sell copies of the Software, and to permit persons to whom
@@ -19,9 +20,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-Scope: This license covers only original project code and original project
-documentation. It does not grant rights to McDonald's trademarks, official
-API responses, official documentation, images referenced by API responses,
-or the unmodified official CONTEST_DECLARATION.md. Those remain subject to
-their respective rights and service terms.
