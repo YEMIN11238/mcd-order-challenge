@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "deckId": "verified-20261023-v1",
+  "title": "麦麦点餐挑战",
+  "mode": "recorded",
+  "repo": "https://github.com/YEMIN11238/mcd-order-challenge",
+  "playUrl": "https://yemin11238.github.io/mcd-order-challenge/",
+  "recordDates": [
+    "2026-10-20",
+    "2026-10-23"
+  ],
+  "sourceFiles": [
+    {
+      "path": "evidence/official-20261020.json",
+      "sha256": "16af59c6edf5180f5dcf1edbe6abcb1056717fb1c5ff8d0b38b8c0483261f445"
+    },
+    {
+      "path": "evidence/official-20261023.json",
+      "sha256": "53db222b986afe06ddca1ac2b462471451236a421f14f2130eabd9ddd3e8983e"
+    }
+  ],
+  "questions": [
+    {
+      "id": "budget",
+      "tag": "预算关",
+      "title": "35 元，这顿怎么选？",
+      "story": "在悦荟广场店，想吃板烧鸡腿堡和中杯可乐，薯条选中份或大份都可以。预算不超过 35 元，下面哪份符合？",
+      "conditions": [
+        "预算 ≤ ¥35",
+        "同一家店",
+        "薯条规格可调整"
+      ],
+      "context": "2026-10-23 采集 · 测试预约 12:00 自取",
+      "options": [
+        {
+          "id": "large",
+          "title": "板烧鸡腿堡 · 大薯条 · 可乐中杯",
+          "subtitle": "大薯条方案",
+          "priceFen": 3700,
+          "sourceId": "20261023-08"
+        },
+        {
+          "id": "medium",
+          "title": "板烧鸡腿堡 · 中薯条 · 可乐中杯",
+          "subtitle": "中薯条方案",
+          "priceFen": 3450,
+          "sourceId": "20261023-07"
+        }
+      ],
+      "correctId": "medium",
+      "verdict": "先过预算，再看搭配。",
+      "explanation": "本次中薯方案核价 ¥34.50，大薯方案 ¥37.00。明确允许调整规格时，中薯方案在 35 元以内；大薯方案超出 ¥2.00。",
+      "takeaway": "比较的是整份餐的官方核价，套餐名称相同也可能因选项不同而改变总价。",
+      "sources": [
+        {
+          "id": "20261023-07",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:52:54",
+          "traceId": "eadc213e16e2f1272d504977bfa4aba0",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 3450
+        },
+        {
+          "id": "20261023-08",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:52:55",
+          "traceId": "a3316dbe9354faa85d4ee8a1d3361423",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 3700
+        }
+      ],
+      "evidenceUrl": "https://github.com/YEMIN11238/mcd-order-challenge/blob/main/docs/evidence.md#budget"
+    },
+    {
+      "id": "must-keep",
+      "tag": "口味关",
+      "title": "便宜 1 元，就能替你换吗？",
+      "story": "你坚持小食必须是咖喱风味肉骨鸡 3 块；板烧去烤味酱、中杯无糖可乐去冰也要保留。这两份已核价方案，哪份符合你的要求？",
+      "conditions": [
+        "咖喱肉骨鸡必须保留",
+        "不接受改成薯条",
+        "去酱 · 无糖 · 去冰"
+      ],
+      "context": "2026-10-20 历史即时自取实测",
+      "options": [
+        {
+          "id": "keep",
+          "title": "板烧鸡腿堡 · 马来咖喱风味薄皮肉骨鸡3块 · 无糖可口可乐中杯",
+          "subtitle": "悦荟广场 · 原小食",
+          "priceFen": 3700,
+          "sourceId": "20261020-03"
+        },
+        {
+          "id": "swap",
+          "title": "板烧鸡腿堡 · 大薯条 · 无糖可口可乐中杯",
+          "subtitle": "食品一店 · 改成大薯条",
+          "priceFen": 3600,
+          "sourceId": "20261020-05"
+        }
+      ],
+      "correctId": "keep",
+      "verdict": "必须项，不能被低价覆盖。",
+      "explanation": "悦荟广场的 ¥37.00 方案包含指定的小食。食品一店 ¥36.00 的实际小食是大薯条。本次该店同套餐详情未列出咖喱肉骨鸡；只有明确允许替代后，这个改餐方案才成立。",
+      "takeaway": "这是本次套餐选项的差异，不能据此判断全店缺货或永久停售。特制参数已提交，核价不证明实际出餐。",
+      "sources": [
+        {
+          "id": "20261020-02",
+          "tool": "query-meal-detail",
+          "at": "2026-10-20 14:52:55",
+          "traceId": "7ebee12e647e206c3b0c72abc38552b6",
+          "file": "evidence/official-20261020.json",
+          "storeCode": "1450104",
+          "reservation": null
+        },
+        {
+          "id": "20261020-03",
+          "tool": "calculate-price",
+          "at": "2026-10-20 14:52:56",
+          "traceId": "826ceb6b72e0d7af0302544927f93ee5",
+          "file": "evidence/official-20261020.json",
+          "storeCode": "1450104",
+          "reservation": null,
+          "priceFen": 3700
+        },
+        {
+          "id": "20261020-04",
+          "tool": "query-meal-detail",
+          "at": "2026-10-20 14:52:59",
+          "traceId": "abfb25734029484ecf5bbc90a8514564",
+          "file": "evidence/official-20261020.json",
+          "storeCode": "1450056",
+          "reservation": null
+        },
+        {
+          "id": "20261020-05",
+          "tool": "calculate-price",
+          "at": "2026-10-20 14:53:09",
+          "traceId": "30d566461319d6d3de24305f396a3eeb",
+          "file": "evidence/official-20261020.json",
+          "storeCode": "1450056",
+          "reservation": null,
+          "priceFen": 3600
+        }
+      ],
+      "evidenceUrl": "https://github.com/YEMIN11238/mcd-order-challenge/blob/main/docs/evidence.md#must-keep"
+    },
+    {
+      "id": "upgrade",
+      "tag": "加价关",
+      "title": "只把可乐升杯，多付多少？",
+      "story": "同店、同一板烧三件套，板烧和中薯条保持不变。中杯可乐方案核价 ¥34.50，大杯可乐方案核价 ¥36.50。这一次升杯的增量是多少？",
+      "conditions": [
+        "同店 · 同一时段",
+        "只改可乐杯型",
+        "求增量，不是求总价"
+      ],
+      "context": "2026-10-23 采集 · 测试预约 12:00 自取",
+      "options": [
+        {
+          "id": "zero",
+          "title": "没有增加",
+          "subtitle": "觉得套餐内换选项都免费",
+          "amountFen": 0
+        },
+        {
+          "id": "total",
+          "title": "¥36.50",
+          "subtitle": "把新套餐总价当作升杯费用",
+          "amountFen": 3650
+        },
+        {
+          "id": "delta",
+          "title": "¥2.00",
+          "subtitle": "用两份整单核价相减",
+          "amountFen": 200
+        }
+      ],
+      "correctId": "delta",
+      "verdict": "增量，要用同条件的两份报价相减。",
+      "explanation": "¥36.50 − ¥34.50 = ¥2.00。两份请求都保留板烧和中薯，仅将可乐中杯换为大杯。这里没有把饮料单点价当作套餐升杯费。",
+      "takeaway": "这是该次、该店、该组合的差额，不是全国通用的升杯价。",
+      "sources": [
+        {
+          "id": "20261023-07",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:52:54",
+          "traceId": "eadc213e16e2f1272d504977bfa4aba0",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 3450
+        },
+        {
+          "id": "20261023-09",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:52:55",
+          "traceId": "868dc0b5af225af6b55aab168d59a007",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 3650
+        }
+      ],
+      "evidenceUrl": "https://github.com/YEMIN11238/mcd-order-challenge/blob/main/docs/evidence.md#upgrade"
+    },
+    {
+      "id": "stores",
+      "tag": "换店关",
+      "title": "同一份餐，两家店一定同价吗？",
+      "story": "本次都选板烧鸡腿堡、大薯条、中杯可乐，不用券、不随单购卡。悦荟广场核价 ¥37.00，食品一店核价 ¥36.00。哪一个判断成立？",
+      "conditions": [
+        "餐品与份数相同",
+        "相同预约时段",
+        "只比较这两份报价"
+      ],
+      "context": "2026-10-23 采集 · 测试预约 12:00 自取",
+      "options": [
+        {
+          "id": "a",
+          "title": "悦荟广场少付 ¥1.00",
+          "subtitle": "选择悦荟广场"
+        },
+        {
+          "id": "b",
+          "title": "食品一店少付 ¥1.00",
+          "subtitle": "选择食品一店"
+        },
+        {
+          "id": "same",
+          "title": "两家价格相同",
+          "subtitle": "觉得同套餐应该统一价格"
+        }
+      ],
+      "correctId": "b",
+      "verdict": "同一搭配，也要逐店核价。",
+      "explanation": "食品一店 ¥36.00，比悦荟广场 ¥37.00 少 ¥1.00。这两份请求的商品、数量、餐段和渠道一致，比较依据是官方总金额。",
+      "takeaway": "这没有计算路程与时间成本，也不代表食品一店所有餐品都更便宜。",
+      "sources": [
+        {
+          "id": "20261023-08",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:52:55",
+          "traceId": "a3316dbe9354faa85d4ee8a1d3361423",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 3700
+        },
+        {
+          "id": "20261023-12",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:52:57",
+          "traceId": "4c035a83e822a3296bed48c3a34d1b9e",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450056",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 3600
+        }
+      ],
+      "evidenceUrl": "https://github.com/YEMIN11238/mcd-order-challenge/blob/main/docs/evidence.md#stores"
+    },
+    {
+      "id": "promo",
+      "tag": "压轴关",
+      "title": "菜单写 28，这次真付 28 吗？",
+      "story": "板烧鸡腿堡四件套，菜单 currentPrice 展示 ¥28.00，并标注“随单购麦金卡优惠”。本次选板烧、中薯、麦乐鸡 4 块和中杯可乐，不用券、不随单购卡。应按哪个金额判断这份报价？",
+      "conditions": [
+        "菜单展示价有条件",
+        "本次不随单购卡",
+        "已取得官方整单核价"
+      ],
+      "context": "2026-10-23 采集 · 测试预约 12:00 自取",
+      "options": [
+        {
+          "id": "quote",
+          "title": "¥57.00",
+          "subtitle": "本次 calculate-price 返回的应付",
+          "amountFen": 5700
+        },
+        {
+          "id": "display",
+          "title": "¥28.00",
+          "subtitle": "直接把菜单展示价当应付",
+          "amountFen": 2800
+        },
+        {
+          "id": "order-first",
+          "title": "必须先下单才知道",
+          "subtitle": "觉得单独核价无法得到总金额"
+        }
+      ],
+      "correctId": "quote",
+      "verdict": "有附加条件的展示价，先核整单。",
+      "explanation": "这次 calculate-price 返回 price=5700 分，即 ¥57.00，与菜单展示的 ¥28.00 相差 ¥29.00。请求没有 withOrder 随单购卡参数，也没有券；全程没有创建订单。",
+      "takeaway": "没有测试购卡后的整单费用，不能据此推算开卡是否划算；也不能把本次报价当成所有人的固定价。",
+      "sources": [
+        {
+          "id": "20261023-03",
+          "tool": "query-meals",
+          "at": "2026-10-23 01:50:11",
+          "traceId": "ec74a070d17b49e3c982d50a79901475",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00"
+        },
+        {
+          "id": "20261023-04",
+          "tool": "query-meal-detail",
+          "at": "2026-10-23 01:51:32",
+          "traceId": "2d6c458fda8c49bb36745bc716c6848c",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00"
+        },
+        {
+          "id": "20261023-05",
+          "tool": "calculate-price",
+          "at": "2026-10-23 01:51:33",
+          "traceId": "c16765e6556d1720884c92221d6c624c",
+          "file": "evidence/official-20261023.json",
+          "storeCode": "1450104",
+          "reservation": "2026-10-23 12:00",
+          "priceFen": 5700
+        }
+      ],
+      "evidenceUrl": "https://github.com/YEMIN11238/mcd-order-challenge/blob/main/docs/evidence.md#promo"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+name: Publish challenge
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Verify evidence and five-question game
+        run: |
+          python scripts/build_quiz.py --check
+          python -m unittest discover -s tests -v
+          node --test tests/model.test.mjs
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: web
+      - uses: actions/deploy-pages@v5
+        id: deployment

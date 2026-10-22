@@ -1,0 +1,4 @@
+interface:
+  display_name: "麦麦点餐挑战"
+  short_description: "用五道有官方证据的点餐题，检查预算、必须项、加价与条件优惠"
+  default_prompt: "使用 $mcd-order-challenge 给我逐题出题，选完再用官方历史证据解释答案。"

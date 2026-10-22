@@ -1,0 +1,6 @@
+.mcd-private/
+__pycache__/
+*.pyc
+.env*
+.DS_Store
+*.zip
